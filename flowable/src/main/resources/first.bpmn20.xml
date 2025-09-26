@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  这是一个简化的 Flowable BPMN 流程定义文件
+  流程 ID 为 "first"，包含一个开始事件、两个用户任务和一个结束事件
+-->
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:flowable="http://flowable.org/bpmn"
+             targetNamespace="http://www.flowable.org/processdef">
+
+    <!-- 流程定义 -->
+    <process id="first" name="first" isExecutable="true">
+        <!-- 开始事件：流程的入口 -->
+        <startEvent id="startEvent1">
+            <documentation>开始</documentation>
+        </startEvent>
+
+        <!-- 用户任务 1 -->
+        <!-- flowable:assignee 指定任务负责人，这里是 "zs" -->
+        <userTask id="task1" name="Task ZS" flowable:assignee="zs"/>
+
+        <!-- 用户任务 2 -->
+        <!-- flowable:assignee 指定任务负责人，这里是 "ls" -->
+        <userTask id="task2" name="Task LS" flowable:assignee="ls"/>
+
+        <!-- 流程连线，定义流程流转顺序 -->
+        <!-- 从开始事件流向用户任务 1 -->
+        <sequenceFlow id="flow1" sourceRef="startEvent1" targetRef="task1"/>
+        <!-- 用户任务 1 完成后流向用户任务 2 -->
+        <sequenceFlow id="flow2" sourceRef="task1" targetRef="task2"/>
+        <!-- 用户任务 2 完成后流向结束事件 -->
+        <sequenceFlow id="flow3" sourceRef="task2" targetRef="endEvent1"/>
+
+        <!-- 结束事件：流程结束的标志 -->
+        <endEvent id="endEvent1"/>
+    </process>
+
+</definitions>
