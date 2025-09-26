@@ -4,7 +4,6 @@ spring:
     username: root
     password: hetao   # 你的密码
     driver-class-name: com.mysql.cj.jdbc.Driver
-
-  flowable:
-    database-schema-update: true   # 自动建表
-    async-executor-activate: false
+flowable:
+  database-schema-update: true   # 自动建表
+  async-executor-activate: false
