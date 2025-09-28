@@ -1,3 +1,7 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
 spring:
   datasource:
     url: jdbc:mysql://47.109.55.137:3306/flowable?serverTimezone=UTC&characterEncoding=utf8&useSSL=false
